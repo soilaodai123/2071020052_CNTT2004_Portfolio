@@ -1,29 +1,13 @@
 Không hiện ảnh
 Không đúng đường dẫn
-# Báo cáo chẩn đoán
+Bug ở đâu đó
+
+## Kết quả kiểm tra và xử lý
 
 Ngày kiểm tra: 2026-10-30
 
-Phạm vi: `index.html`, `ket-qua.html`, `css/style.css` và thư mục `assets/`.
+- **Ảnh không hiển thị / sai đường dẫn:** chưa tái hiện được trên GitHub Pages. Các ảnh đại diện và ảnh dự án tải thành công (HTTP 200); đường dẫn `assets/...` khớp với các tệp hiện có. Nếu lỗi vẫn xảy ra ở máy hoặc trình duyệt khác, cần kiểm tra URL yêu cầu, trạng thái Network và Console tại môi trường đó.
+- **CSS local có khối chưa đóng:** trong `css/style.css`, thiếu dấu `}` trước các selector `body`, `.hero-inner` và `.button:hover` để đóng lần lượt các khối `html`, `.hero` và `.button`. Sửa tối thiểu là thêm mỗi dấu `}` tại các vị trí đó.
+- **Bản local và bản GitHub Pages không đồng nhất:** logo hiển thị trên trang online là “Việt Anh”, khác nội dung trong `index.html` local (“Đỗ Văn Dũng”). Cần xác minh nhánh/commit đang được GitHub Pages triển khai trước khi đồng bộ.
 
-Không phát hiện lỗi cú pháp HTML/CSS bằng bộ kiểm tra hiện có. Chưa sửa các file mã nguồn; các mục dưới đây là đề xuất.
-
-## Các vấn đề và đề xuất
-
-1. **Tên hiển thị không nhất quán:** logo trên trang chủ ghi "Việt Anh", trong khi tiêu đề trang, phần giới thiệu và trang kết quả đều ghi "Đỗ Văn Dũng". Đề xuất đổi logo trang chủ cho thống nhất.
-
-2. **Ảnh đại diện:** `index.html` tham chiếu `assets/avt.jpg` và file này hiện có trong thư mục `assets/`. Ba ảnh dự án cũng tồn tại đúng tên được tham chiếu. Vì vậy, hiện chưa thấy sai đường dẫn trong mã nguồn. Nếu trình duyệt vẫn không hiện ảnh, hãy kiểm tra Console/Network, bảo đảm mở trang từ thư mục dự án và tên file khớp chính xác chữ hoa/chữ thường.
-
-3. **Ảnh dự án không khớp nội dung:** ảnh `assets/du-an-2.svg` có nhãn "Dự án 2 – Flutter", nhưng thẻ dự án tương ứng mô tả "Portfolio CV cá nhân". Đề xuất thay ảnh hoặc sửa nhãn trong ảnh để khớp mô tả.
-
-4. **Trang kết quả thiếu kiểu trình bày riêng:** `ket-qua.html` dùng các lớp `result-main` và `result-panel`, nhưng `css/style.css` chưa định nghĩa kiểu cho hai lớp này. Đề xuất bổ sung khoảng cách, giới hạn chiều rộng và cách trình bày phù hợp để nội dung không dính sát phần đầu trang.
-
-5. **Form đưa dữ liệu lên URL:** form dùng `method="get"`; email và lời nhắn sẽ xuất hiện trong query string. Trang đã cảnh báo hành vi này, phù hợp với bài thực hành, nhưng không nên dùng cho dữ liệu thật. Nếu triển khai thực tế, cần xử lý qua máy chủ bằng POST và tránh lưu dữ liệu nhạy cảm không cần thiết.
-
-6. **Liên kết dự án chưa hoàn chỉnh:** các địa chỉ GitHub trong phần dự án chỉ là văn bản và còn ghi "liên kết cần cập nhật". Đề xuất thay bằng URL chính xác và dùng thẻ liên kết nếu dự án đã được công khai.
-
-7. **Chân trang trang kết quả chưa đồng bộ:** câu "Toi la sieu du bi." thiếu dấu tiếng Việt và khác nội dung chân trang trang chủ. Đề xuất sửa nội dung và thống nhất cách ghi tên/chân trang.
-
-## Kết luận về ghi chú ảnh
-
-Ghi chú ban đầu "Không hiện ảnh / Không đúng đường dẫn" chưa khớp với trạng thái file hiện tại: các đường dẫn ảnh trong HTML đều trỏ đến file đang tồn tại. Cần kiểm tra trực tiếp trên trình duyệt nếu lỗi hiển thị vẫn còn.
+Trạng thái: đã ghi nhận các kết quả kiểm tra và cách sửa tối thiểu; chưa chỉnh sửa mã nguồn, nên các lỗi CSS nêu trên chưa được xác nhận là đã sửa.
